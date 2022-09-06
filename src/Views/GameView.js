@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react'
 import TopBarComp from '../Components/TopBarComp';
 import Footer from '../Components/Footer';
+import InfoGame from '../Components/InfoGame';
+import { FondoColor } from '../Constants/colors';
 
 const GameView = ({navigation, route}) => {
     const [Game, setGame] = useState([])
@@ -31,15 +33,12 @@ const GameView = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#444444", flex: 1 }}>
-       <TopBarComp/>
       <View style={styles.container}> 
-
+        <TopBarComp/>
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
-        <Text>Informacion del juego</Text>
-
-        <Text>{Game.title}</Text>
-        <Text>{Game.title}</Text>
-        <Text>{Game.title}</Text>
+        <Text style={styles.Texto}>Informacion del juego</Text>
+        <InfoGame/>
+        <Text style={styles.Texto}>{Game.title}</Text>
       </View>
     </SafeAreaView>
   );
@@ -47,7 +46,7 @@ const GameView = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#1F0E2F', 
+        backgroundColor: FondoColor, 
         height: '90%',
     },
     txt:{
@@ -66,7 +65,8 @@ const styles = StyleSheet.create({
       width: '100%', 
       height: 210, 
       padding: 0, 
-      alignSelf: 'center'
+      alignSelf: 'center',
+      marginVertical: 10,
     }
   })
 

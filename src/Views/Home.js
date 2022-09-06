@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import JuegoComp from '../Components/JuegoComp';
 import TopBarComp from '../Components/TopBarComp';
-import Footer from '../Components/Footer';  
+import Footer from '../Components/Footer';
+import { FondoColor } from '../Constants/colors';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -30,7 +31,7 @@ function Home({navigation}) {
   return (
     <SafeAreaView style={{backgroundColor: '#444444', flex: 1,}}>
       <View style={styles.container} >
-        <TopBarComp/>
+        <TopBarComp />
         <FlatList
           
           data={Datos}
@@ -44,7 +45,7 @@ function Home({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-      backgroundColor: '#1F0E2F',
+      backgroundColor: FondoColor,
       
   },
   txt:{

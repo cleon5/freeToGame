@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { FontAwesome } from "@expo/vector-icons";
+import { FondoColor } from '../Constants/colors';
 
 const TopBarComp = () => {
   return (
@@ -19,7 +20,8 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignSelf: 'center',
         marginVerticalAlign: 'middle',
-
+        backgroundColor: FondoColor,
+        
     },
     txt:{
       color: 'white',

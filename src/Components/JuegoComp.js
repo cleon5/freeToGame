@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, Pressable} from 'react-native'
 import React from 'react'
-
+import { CardColor } from '../Constants/colors';
 
 const JuegoComp = ({item = [], navigation}) => {
   return (
@@ -31,15 +31,12 @@ const styles = StyleSheet.create({
   image:{
     width: '100%', 
     height: 200, 
-    padding: 0,
     borderRadius: 5, 
     alignSelf: 'center'
   },
   card:{
-    backgroundColor: "#0B082A",
+    backgroundColor: CardColor,
     alignContent: 'center',
-    
-
     margin: 5,
     borderRadius: 15,  
   },

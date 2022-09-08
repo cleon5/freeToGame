@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, Text, View, Image } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Image, ScrollView } from 'react-native';
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,6 +6,7 @@ import React from 'react'
 import TopBarComp from '../Components/TopBarComp';
 import Footer from '../Components/Footer';
 import InfoGame from '../Components/InfoGame';
+import Screenshots from '../Components/Screenshots';
 import { FondoColor } from '../Constants/colors';
 
 const GameView = ({navigation, route}) => {
@@ -18,8 +19,6 @@ const GameView = ({navigation, route}) => {
             axios.get(url)
             .then(response => {
                 setGame(response.data);
-                console.log(response.data);
-                console.log(Game)
             })
         } catch (error) {
             console.log(error);
@@ -32,14 +31,21 @@ const GameView = ({navigation, route}) => {
 
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#444444", flex: 1 }}>
-      <View style={styles.container}> 
+    <SafeAreaView style={{ backgroundColor: "#444444", height: "100%"}}>
+      
+      <ScrollView style={styles.container}> 
         <TopBarComp/>
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
-        <Text style={styles.Texto}>Informacion del juego</Text>
-        <InfoGame/>
-        <Text style={styles.Texto}>{Game.title}</Text>
-      </View>
+        <Text style={styles.TextoTitulo}>Descripcion</Text>
+        <Text style={styles.Texto}>{Game.short_description }</Text>
+        <Text style={styles.TextoTitulo}>Informacion del juego</Text>
+      
+        <InfoGame platform={Game.platform} publisher={Game.publisher} developer={Game.developer} 
+          genre={Game.genre}   />
+
+          <Screenshots id={Game.id} datos={Game}/>
+
+      </ScrollView >
     </SafeAreaView>
   );
 }
@@ -47,7 +53,12 @@ const GameView = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: FondoColor, 
-        height: '90%',
+        //height: "100%",
+    },
+    TextoTitulo:{
+      color: 'white',
+      fontSize: 22,
+      paddingBottom: 5, 
     },
     txt:{
       color: 'white',
@@ -57,6 +68,7 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       textAlignVertical: 'center',
       fontSize: 15,
+      paddingBottom: 5,
     },
     TextoView:{
       paddingVertical: 5,

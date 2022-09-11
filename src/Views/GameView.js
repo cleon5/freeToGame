@@ -11,14 +11,19 @@ import { FondoColor } from '../Constants/colors';
 
 const GameView = ({navigation, route}) => {
     const [Game, setGame] = useState([])
-    const {id}= route.params;
-    const GetGame = (id) => {
+    const [Sshots, setSshots] = useState([])
+    const {id} = route.params;
+    //console.log((Sshots[1].image))
+
+    const GetGame = async(id) => {
         try {
             let url ="https://www.freetogame.com/api/game?id="+id;
             console.log(url);
-            axios.get(url)
+            await axios.get(url)
             .then(response => {
-                setGame(response.data);
+                let game = response.data
+                setGame(game);
+                setSshots(game.screenshots)
             })
         } catch (error) {
             console.log(error);
@@ -31,21 +36,30 @@ const GameView = ({navigation, route}) => {
 
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#444444", height: "100%"}}>
-      
-      <ScrollView style={styles.container}> 
-        <TopBarComp/>
+    <SafeAreaView style={{ backgroundColor: "#444444", height: "100%" }}>
+      <ScrollView style={styles.container}>
+        <TopBarComp />
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
         <Text style={styles.TextoTitulo}>Descripcion</Text>
-        <Text style={styles.Texto}>{Game.short_description }</Text>
+        <Text style={styles.Texto}>{Game.short_description}</Text>
         <Text style={styles.TextoTitulo}>Informacion del juego</Text>
-      
-        <InfoGame platform={Game.platform} publisher={Game.publisher} developer={Game.developer} 
-          genre={Game.genre}   />
 
-          <Screenshots id={Game.id} datos={Game}/>
+        <InfoGame
+          platform={Game.platform}
+          publisher={Game.publisher}
+          developer={Game.developer}
+          genre={Game.genre}
+        />
 
-      </ScrollView >
+    <Text style={styles.TextoTitulo}>Screenshots</Text>
+        {Sshots[1] == undefined ? null : (
+          <ScrollView style={{paddingVertical: 10,}}>
+            <Image style={styles.image2} source={{ uri: Sshots[0].image }} />
+            <Image style={styles.image2} source={{ uri: Sshots[1].image }} />
+            <Image style={styles.image2} source={{ uri: Sshots[2].image }} />
+          </ScrollView>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -53,6 +67,8 @@ const GameView = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: FondoColor, 
+        flex: 1,
+        paddingHorizontal: 5,
         //height: "100%",
     },
     TextoTitulo:{
@@ -79,6 +95,12 @@ const styles = StyleSheet.create({
       padding: 0, 
       alignSelf: 'center',
       marginVertical: 10,
+    },
+    image2:{
+      width: '90%', 
+      height: 180, 
+      padding: 10, 
+      alignSelf: 'center',
     }
   })
 

@@ -2,32 +2,12 @@ import { View, Text, Image, ScrollView, StyleSheet } from 'react-native'
 import React, { useState, useEffect }  from 'react'
 import axios from 'axios'
 
-const Screenshots = ({id, datos = []}) => {
+const Screenshots = ({ datos = []}) => {
     console.log(datos)
-    /*
-    const [Screem, setScreem] = useState([])
-    const GetGame = () => {
-        try {
-            let url ="https://www.freetogame.com/api/game?id="+id;
-            console.log(url);
-            axios.get(url)
-            .then(response => {
-                setScreem(response.data);
-                console.log(response.data);
-                console.log(Screen)
-            })
-        } catch (error) {
-            console.log(error);
-        }
-        
-    }
-    useEffect(() => {
-       //GetGame()
-    }, [])*/
-   // let images = datos.screenshots
+    
   return (
-    <ScrollView>
-        <Text>{datos.id}</Text>
+    <ScrollView horizontal={true} >
+        <Image style={styles.image} source={{ uri: datos[0].image}}/>
     </ScrollView>
   )
 }

@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GameView from './src/Views/GameView';
+import ejem from './src/Views/ejem';
 
 
 const Stack = createNativeStackNavigator();

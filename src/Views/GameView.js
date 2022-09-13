@@ -13,7 +13,6 @@ const GameView = ({navigation, route}) => {
     const [Game, setGame] = useState([])
     const [Sshots, setSshots] = useState([])
     const {id} = route.params;
-    //console.log((Sshots[1].image))
 
     const GetGame = async(id) => {
         try {

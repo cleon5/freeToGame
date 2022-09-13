@@ -5,6 +5,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GameView from './src/Views/GameView';
+import FilterView from './src/Views/FilterView';
+import UserView from './src/Views/UserView';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +16,8 @@ export default function App() {
        <Stack.Navigator initialRouteName='home' screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="GameView" component={GameView} />
+        <Stack.Screen name="UserView" component={UserView} />
+        <Stack.Screen name="FilterView" component={FilterView} />
       </Stack.Navigator>
     </NavigationContainer>
     

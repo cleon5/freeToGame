@@ -5,20 +5,32 @@ import JuegoComp from '../Components/JuegoComp';
 import TopBarComp from '../Components/TopBarComp';
 import Footer from '../Components/Footer';
 import { FondoColor } from '../Constants/colors';
-
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-function Home({navigation, y}) {
+function Home({navigation, route}) {
     const [Datos, setDatos] = useState([])
     const [Datos2, setDatos2] = useState([])
-    let x = 0;
-    console.log(x + y)
+    const {Category, Platform, Order} = route.params || '';
+    console.log(Category+ Platform+ Order)
+    
+
     const axiosGet = () => {
         try {
-            axios.get('https://www.freetogame.com/api/games' )
+            if(Category == undefined){
+              axios.get('https://www.freetogame.com/api/games' )
+            .then(response => {
+                setDatos(Object.values(response.data));
+            }) 
+            }
+            else{
+              let url = `https://www.freetogame.com/api/filter?tag=${Category}&platform=${Platform}&sort-by=${Order}`;
+              console.log(url);
+              axios.get(url)
             .then(response => {
                 setDatos(Object.values(response.data));
             })
+            }
+            
         } catch (error) {
             console.log(error);
         }
@@ -28,7 +40,7 @@ function Home({navigation, y}) {
     }, [])
     
     const handleCallback = (childData) =>{
-      console.log(childData)
+      //console.log(childData)
   }
 
   return (
@@ -43,7 +55,7 @@ function Home({navigation, y}) {
             <JuegoComp item={item} navigation={navigation} />}
         />
       </View>
-      <Footer/>
+      <Footer navigation={navigation}/>
     </SafeAreaView>
   );
 }

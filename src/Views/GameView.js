@@ -33,12 +33,14 @@ const GameView = ({navigation, route}) => {
     useEffect(() => {
         GetGame(id)
     }, [])
-
+    const handleCallback = (childData) =>{
+      console.log(childData)
+  }
 
   return (
     <SafeAreaView style={{ backgroundColor: "#444444", height: "100%" }}>
       <ScrollView style={styles.container}>
-        <TopBarComp />
+        <TopBarComp parentCallback = {handleCallback}/>
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
         <Text style={styles.TextoTitulo}>Descripcion</Text>
         <Text style={styles.Texto}>{Game.short_description}</Text>

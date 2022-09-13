@@ -8,15 +8,16 @@ import { FondoColor } from '../Constants/colors';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-function Home({navigation}) {
+function Home({navigation, y}) {
     const [Datos, setDatos] = useState([])
-    
+    const [Datos2, setDatos2] = useState([])
+    let x = 0;
+    console.log(x + y)
     const axiosGet = () => {
         try {
             axios.get('https://www.freetogame.com/api/games' )
             .then(response => {
                 setDatos(Object.values(response.data));
-                console.log(Datos[2].id);
             })
         } catch (error) {
             console.log(error);
@@ -26,19 +27,23 @@ function Home({navigation}) {
         axiosGet()
     }, [])
     
-    
+    const handleCallback = (childData) =>{
+      console.log(childData)
+  }
 
   return (
     <SafeAreaView style={{backgroundColor: '#444444', flex: 1,}}>
+      <TopBarComp parentCallback = {handleCallback}/>
       <View style={styles.container} >
-        <TopBarComp />
+        
         <FlatList
-          
+          styles={{height: 100, paddingBottom:100, paddingTop:100, }}
           data={Datos}
-          renderItem={({ item,}) => <JuegoComp item={item} navigation={navigation} />}
+          renderItem={({ item,}) => 
+            <JuegoComp item={item} navigation={navigation} />}
         />
       </View>
-      <Footer></Footer>
+      <Footer/>
     </SafeAreaView>
   );
 }
@@ -46,7 +51,7 @@ function Home({navigation}) {
 const styles = StyleSheet.create({
   container: {
       backgroundColor: FondoColor,
-      
+      height: "90%",
   },
   txt:{
     color: 'white',

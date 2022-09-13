@@ -29,7 +29,7 @@ const TopBarComp = ({parentCallback = ''}) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '5%',
+        height: '7%',
         width: '100%',
         alignSelf: 'center',
         marginVerticalAlign: 'middle',

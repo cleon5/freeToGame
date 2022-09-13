@@ -6,26 +6,26 @@ import { FontAwesome, Entypo } from "@expo/vector-icons";
 const Footer = () => {
   return (
     <View style={styles.container}>
-      <Entypo name="home" size={40} color="white" style={styles.icon}/>
-      <Entypo name="home" size={40} color="white" style={styles.icon}/>
-      <Entypo name="home" size={40} color="white" style={styles.icon}/>
-      <Entypo name="home" size={40} color="white" style={styles.icon}/>
+      <Entypo name="home" size={50} color="white" style={styles.icon}/>
+      <Entypo name="home" size={50} color="white" style={styles.icon}/>
+      <Entypo name="home" size={50} color="white" style={styles.icon}/>
+      <Entypo name="home" size={50} color="white" style={styles.icon}/>
     </View>
   )
 }
 const styles = StyleSheet.create({
     container: {
-        height: '5%',
+        height: '8%',
         width: '100%',
         flexDirection: "row",
         backgroundColor: FondoColor,
+        alignContent: "space-around",	
+        justifyContent: "center",
         alignItems: "center",
-        alignContent: "center",
-        alignSelf: "center",
         
     }, 
     icon:{
-      paddingHorizontal: 10,
+      paddingHorizontal: "5%",
     }
 
 })

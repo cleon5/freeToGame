@@ -37,7 +37,7 @@ function Home({navigation, y}) {
       <View style={styles.container} >
         
         <FlatList
-          styles={{height: 100, paddingBottom:100, paddingTop:100, }}
+          
           data={Datos}
           renderItem={({ item,}) => 
             <JuegoComp item={item} navigation={navigation} />}
@@ -51,7 +51,7 @@ function Home({navigation, y}) {
 const styles = StyleSheet.create({
   container: {
       backgroundColor: FondoColor,
-      height: "90%",
+      height: "85%",
   },
   txt:{
     color: 'white',

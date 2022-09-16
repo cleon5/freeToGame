@@ -1,24 +1,19 @@
 import { StyleSheet, FlatList, Text, View, Button } from "react-native";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import JuegoComp from "../Components/JuegoComp";
-import TopBarComp from "../Components/TopBarComp";
-import Footer from "../Components/Footer";
 import { FondoColor } from "../Constants/colors";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Picker } from "@react-native-picker/picker";
 
-const FilterView = ({ navigation }) => {
+const CompPicker = ({DatosBusqueda = [], parentCallback}) => {
   const [Category, setCategory] = useState(Category);
   const [Platform, setPlatform] = useState(Platform);
   const [Order, setOrder] = useState(Order);
+  const [Mostrar, setMostrar] = useState(true);
 
-  const handleCallback = (childData) => {
-    console.log(childData);
-  };
+  let data = []
+  
+  
+  //DatosBusqueda(data)
   return (
-    <SafeAreaView style={{ backgroundColor: "#444444", flex: 1 }}>
-      <TopBarComp parentCallback={handleCallback} />
       <View style={styles.container}>
         <Text style={styles.txt}>Category</Text>
         <Picker
@@ -54,19 +49,17 @@ const FilterView = ({ navigation }) => {
           
         </Picker>
 
-        <Button title="Search" onPress={() => navigation.navigate("Home", {Category: Category, Platform: Platform, Order: Order})}/>
+        <Button title="Search" onPress={() =>{ DatosBusqueda(Category, Platform, Order); parentCallback(true);}}/>
       </View>
-      <Footer navigation={navigation} />
-    </SafeAreaView>
   );
 };
 
-export default FilterView;
+export default CompPicker;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: FondoColor,
-    height: "85%",
+    height: "40%",
     padding: 10,
   },
   txt: {

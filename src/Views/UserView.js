@@ -1,7 +1,4 @@
-import { StyleSheet, FlatList, Text, View } from "react-native";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import JuegoComp from "../Components/JuegoComp";
+import { StyleSheet, Text, View } from "react-native";
 import TopBarComp from "../Components/TopBarComp";
 import Footer from "../Components/Footer";
 import { FondoColor } from "../Constants/colors";

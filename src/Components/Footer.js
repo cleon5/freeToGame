@@ -2,7 +2,6 @@ import { View, Text, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import { FondoColor } from "../Constants/colors";
 import { FontAwesome, Entypo } from "@expo/vector-icons";
-import GameView from "../Views/GameView";
 import axios from 'axios'
 
 const Footer = ({ navigation }) => {

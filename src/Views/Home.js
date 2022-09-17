@@ -27,14 +27,12 @@ function Home({navigation, route}) {
             }  
             else{
               console.log('No')
+               setDatos([]);
               data[0] == undefined ? tag = ''  : tag = `&tag=${data[0]}`
               data[1] == undefined ? platform = '' : platform = `&platform=${data[1]}`
               data[2] == undefined ? sort = `sort-by=popularity`: sort = `sort-by=${data[2]}`
               console.log(tag + 'as')
-
-            
-                
-              // let url = `https://www.freetogame.com/api/filter?sort-by=${data[2]}&platform=${data[1]}&tag=${data[0]}`;
+              
               let url = `https://www.freetogame.com/api/games?${sort}${tag}${platform}`;
               console.log(url);
               axios.get(url)
@@ -59,7 +57,7 @@ function Home({navigation, route}) {
 
   }
   const datosBusqueda = (childData) =>{
-    console.log(childData)
+    console.log(childData + 'chil')
     axiosGet(childData)
 }
 

@@ -7,10 +7,8 @@ const TopBarComp = ({parentCallback}) => {
   
   return (
     <View style={styles.container}>
-      <Button title="Search" style={styles.Button} onPress={() => parentCallback(true)}/>
-
       <TouchableOpacity style={styles.Button} onPress={() => parentCallback(true)}>
-          <Text style={styles.txt}>Search</Text>
+          <Text style={styles.txt}>Filters</Text>
         </TouchableOpacity>
 
       <Text style={styles.txt}>TopBarComp</Text>
@@ -42,8 +40,8 @@ const styles = StyleSheet.create({
       padding : 1,
       margin : 10,
       height : 40,
-      
-      backgroundColor: 'blue',
+      borderRadius : 10,
+      backgroundColor: '#38006b',
       textAlignVertical: 'center',
       alignSelf: 'center',
       color : 'black',

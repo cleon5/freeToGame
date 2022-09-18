@@ -14,9 +14,10 @@ const GameView = ({navigation, route}) => {
     const [Sshots, setSshots] = useState([])
     const [Reque, setReque] = useState([])
     const [More, setMore] = useState(false)
+    const [MoreSS, setMoreSS] = useState(false)
     const {id} = route.params;
     console.log("Reque")
-    console.log(Reque.os)
+    console.log(Game)
     const GetGame = async(id) => {
         try {
             let url ="https://www.freetogame.com/api/game?id="+id;
@@ -38,7 +39,7 @@ const GameView = ({navigation, route}) => {
     useEffect(() => {
         GetGame(id)
     }, [])
-    let url = "https://www.freetogame.com/open/lost-ark"
+    let url = "Game"
     const OpenURLButton = ({ url, children }) => {
       const handlePress = useCallback(async () => {
         const supported = await Linking.canOpenURL(url);
@@ -50,25 +51,36 @@ const GameView = ({navigation, route}) => {
         }
       }, [url]);
     
-      return <Button title={children} onPress={handlePress} />;
+      return (
+        <TouchableOpacity style={styles.Button} onPress={handlePress}>
+          <Text style={styles.txt}>Descargar</Text>
+        </TouchableOpacity>
+      )
     };
     
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#444444", height: "100%" }}>
-      <Text style={styles.TitleGame}>{Game.title}</Text>
+    <SafeAreaView
+      style={{ backgroundColor: "#444444", height: "100%", flex: 1 }}
+    >
+      <View style={styles.container2}>
+        <Text style={styles.TitleGame}>{Game.title}</Text>
+      </View>
+
       <ScrollView style={styles.container}>
-      
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
-<Text style={styles.TextoTitulo}>Descripcion</Text>
-        {More ? 
+        <Text style={styles.TextoTitulo}>Descripcion</Text>
+        {More ? (
           <Text style={styles.Texto}>{Game.description}</Text>
-          : <Text style={styles.Texto}>{Game.short_description}</Text>
-        }
-        <TouchableOpacity style={styles.Button} onPress = {() => setMore(!More)}>
-          {More ? <Entypo name="chevron-small-up" size={24} color="white" /> : 
-          <Entypo name="chevron-down" size={24} color="white" />
-          }
+        ) : (
+          <Text style={styles.Texto}>{Game.short_description}</Text>
+        )}
+        <TouchableOpacity style={styles.Button} onPress={() => setMore(!More)}>
+          {More ? (
+            <Entypo name="chevron-small-up" size={24} color="white" />
+          ) : (
+            <Entypo name="chevron-down" size={24} color="white" />
+          )}
         </TouchableOpacity>
 
         <Text style={styles.TextoTitulo}>Informacion del juego</Text>
@@ -80,17 +92,35 @@ const GameView = ({navigation, route}) => {
           genre={Game.genre}
         />
 
-    <Text style={styles.TextoTitulo}>Screenshots</Text>
-        {Sshots[1] == undefined ? null : 
-          <Screenshots datos={Sshots}></Screenshots>
-        }
-        <Text style={styles.TextoTitulo}>Requerimientos</Text>
-        {Reque.os == undefined ? 
-          null
-          : <RequerimientosComp requerimientos={Reque}/>
-        }
+        <Text style={styles.TextoTitulo}>Screenshots</Text>
+        {MoreSS ? (
+          Sshots[1] == undefined ? null : (
+            <Screenshots datos={Sshots}></Screenshots>
+          )
+        ) : null}
+        <TouchableOpacity
+          style={styles.Button}
+          onPress={() => setMoreSS(!MoreSS)}
+        >
+          {MoreSS ? (
+            <Entypo name="chevron-small-up" size={24} color="white" />
+          ) : (
+            <Entypo name="chevron-down" size={24} color="white" />
+          )}
+        </TouchableOpacity>
 
-<OpenURLButton url={url}>Open Supported URL</OpenURLButton>
+       
+        {Game.platform == "Web Browser" ? null : (
+          <View>
+            <Text style={styles.TextoTitulo}>Requerimientos</Text>
+            <RequerimientosComp requerimientos={Reque} />
+          </View>
+         
+        )}
+
+        <OpenURLButton url={Game.freetogame_profile_url}>
+          Ver en la Pagina
+        </OpenURLButton>
       </ScrollView>
     </SafeAreaView>
   );
@@ -99,9 +129,18 @@ const GameView = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: FondoColor, 
-        flex: 1,
+        //flex: 1,
+        height: '55%',
         paddingHorizontal: 5,
     },
+    container2: {
+      height: '7%',
+      width: '100%',
+      backgroundColor: FondoColor,
+      alignItems: "center",
+      alignSelf: 'center',
+      paddingHorizontal: 10,
+  },
     TextoTitulo:{
       color: 'white',
       fontSize: 22,
@@ -134,16 +173,14 @@ const styles = StyleSheet.create({
       fontSize: 35,
       paddingBottom: 10,
       paddingTop: 10, 
-      textAlign: 'center',
       backgroundColor: FondoColor,
-      justifyContent: 'center',
     },
     Button: {
       borderRadius : 10,
       backgroundColor: '#38006b',
-      textAlignVertical: 'center',
       alignSelf: 'center',
       color : 'black',
+      margin : 10,
     }
   })
 

@@ -11,7 +11,7 @@ const TopBarComp = ({parentCallback}) => {
           <Text style={styles.txt}>Filters</Text>
         </TouchableOpacity>
 
-      <Text style={styles.txt}>TopBarComp</Text>
+      <Text style={styles.txt}>FreeToGame</Text>
       <FontAwesome name="gamepad" size={24} style={styles.icon} />
     </View>
   );

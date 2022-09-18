@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/Views/Home';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GameView from './src/Views/GameView';
-import FilterView from './src/Views/FilterView';
 import UserView from './src/Views/UserView';
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +17,6 @@ export default function App() {
         <Stack.Screen name="UserView" component={UserView} />
       </Stack.Navigator>
     </NavigationContainer>
-    
-   
   );
 }
 

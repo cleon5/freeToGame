@@ -5,31 +5,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
 import { FondoColor } from "../Constants/colors";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { getData, storeData, multiGet } from "../Constants/Guardar";
+import { getData, storeData, } from "../Constants/Guardar";
 
 const UserView = ({ navigation }) => {
   const [text, settext] = useState("");
-/*
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem("Prueba", text);
-      console.log("Guardado");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("Prueba");
-      settext(value);
-      console.log(value);
-      if (value !== null) {
-        // value previously stored
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };*/
+
   const Guardar = async (name, data) => {
     await storeData(name, data);
   }

@@ -118,9 +118,7 @@ const GameView = ({navigation, route}) => {
          
         )}
 
-        <OpenURLButton url={Game.freetogame_profile_url}>
-          Ver en la Pagina
-        </OpenURLButton>
+        <OpenURLButton url={Game.freetogame_profile_url}/>
       </ScrollView>
     </SafeAreaView>
   );
@@ -129,7 +127,6 @@ const GameView = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: FondoColor, 
-        //flex: 1,
         height: '55%',
         paddingHorizontal: 5,
     },

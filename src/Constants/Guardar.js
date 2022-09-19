@@ -19,5 +19,24 @@ export const getData = async (name) => {
   } catch (e) {
     console.log(e + 'erro');
   }
-  
+}
+//Json saves fuctions
+const storeDataJson = async (name, data) => {
+  try {
+    const jsonValue = JSON.stringify(data)
+    await AsyncStorage.setItem(name, jsonValue)
+    console.log(jsonValue + name + jsonValue )
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+const getDataJson = async (name) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(name)
+    console.log(jsonValue)
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch(e) {
+    console.log(e);
+  }
 }

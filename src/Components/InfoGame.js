@@ -1,11 +1,10 @@
-import { StyleSheet, FlatList, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react'
 import { CardColor } from '../Constants/colors';
 
 export default function InfoGame({platform, publisher, developer, genre }) {
   return (
     <View style={{flex: 1, flexDirection: 'column', }}>
-      
       <View style={styles.container}>
         <Text style={styles.txt}>{platform}</Text>
         <Text style={styles.txt}>{publisher}</Text>

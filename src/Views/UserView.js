@@ -1,38 +1,47 @@
-import { StyleSheet, Text, View, TextInput, Button} from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, Image } from "react-native";
 import TopBarComp from "../Components/TopBarComp";
 import Footer from "../Components/Footer";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useState, useEffect, } from 'react'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState, useEffect } from "react";
 import { FondoColor } from "../Constants/colors";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { getData, storeData, multiGet } from "../Constants/Guardar";
 
-const UserView = ({navigation}) => {
-  const [text, settext] = useState('') 
-
+const UserView = ({ navigation }) => {
+  const [text, settext] = useState("");
+/*
   const storeData = async () => {
     try {
-      await AsyncStorage.setItem('Prueba', text)
-      console.log('Guardado')
+      await AsyncStorage.setItem("Prueba", text);
+      console.log("Guardado");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
   const getData = async () => {
     try {
-      const value = await AsyncStorage.getItem('Prueba')
-      settext(value)
-      console.log(value)
-      if(value !== null) {
+      const value = await AsyncStorage.getItem("Prueba");
+      settext(value);
+      console.log(value);
+      if (value !== null) {
         // value previously stored
       }
-    } catch(e) {
-      console.log(e)
+    } catch (e) {
+      console.log(e);
     }
+  };*/
+  const Guardar = async (name, data) => {
+    await storeData(name, data);
   }
+
   useEffect(() => {
-    getData()
-  }, [])
-  
+    (async function(){
+      let data = await getData("Prueba");
+      settext(data)
+    })();
+
+  }, []);
+
   const handleCallback = (childData) => {
     //console.log(childData);
   };
@@ -40,10 +49,24 @@ const UserView = ({navigation}) => {
     <SafeAreaView style={{ backgroundColor: "#444444", flex: 1 }}>
       <TopBarComp parentCallback={handleCallback} />
       <View style={styles.container}>
-        <Text style={styles.TextoTitulo}>Requerimientos</Text>
-        <TextInput placeholder="prueba" value={text} onChangeText={value => settext(value)}></TextInput>
+        <Image
+          style={styles.image}
+          source={{
+            uri: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/yimx0zpzin16srfsgo4b",
+          }}
+        />
+
+        <Text style={styles.TextoTitulo}>Usuario</Text>
+        <TextInput
+          style={styles.InputText}
+          placeholder="prueba"
+          value={text}
+          onChangeText={(value) => settext(value)}
+        ></TextInput>
       </View>
-      <Button title="safe" onPress={() => storeData()}></Button>
+
+      <Button title="safe" onPress={() => Guardar("Prueba", text)}></Button>
+
       <Footer navigation={navigation} />
     </SafeAreaView>
   );
@@ -56,11 +79,27 @@ const styles = StyleSheet.create({
     backgroundColor: FondoColor,
     height: "85%",
     padding: 10,
+    flex: 1,
   },
-  TextoTitulo:{
-    color: 'white',
-    fontSize: 22,
-    paddingBottom: 5, 
+  image: {
+    width: "40%",
+    height: 130,
+    margin: 10,
+    padding: 10,
+    borderRadius: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+  TextoTitulo: {
+    color: "white",
+    fontSize: 25,
+    paddingBottom: 5,
+  },
+  InputText: {
+    color: "white",
+    fontSize: 15,
+    paddingBottom: 5,
   },
   txt: {
     color: "white",

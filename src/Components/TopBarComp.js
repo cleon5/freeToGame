@@ -11,7 +11,7 @@ const TopBarComp = ({parentCallback}) => {
           <Text style={styles.txt}>Filters</Text>
         </TouchableOpacity>
 
-      <Text style={styles.txt}>FreeToGame</Text>
+      <Text style={[styles.txt, {fontSize: 30,}]}>FreeToGame</Text>
       <FontAwesome name="gamepad" size={24} style={styles.icon} />
     </View>
   );
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
       color: 'white',
       textAlignVertical: 'center',
       padding: 10,
+      
     },
     icon:{
       color: 'white',

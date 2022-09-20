@@ -68,7 +68,7 @@ export default CompPicker;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: FondoColor,
-    height: "40%",
+    //height: "50%",
     padding: 10,
   },
   txt: {

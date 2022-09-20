@@ -58,18 +58,18 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: FondoColor,
     height: "85%",
-    padding: 10,
+    padding: 20,
     flex: 1,
   },
   image: {
     width: "40%",
     height: 130,
-    margin: 10,
     padding: 10,
     borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
+    marginBottom: 50,
   },
   TextoTitulo: {
     color: "white",

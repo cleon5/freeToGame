@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GameView from './src/Views/GameView';
 import UserView from './src/Views/UserView';
+import FavoritesView from './src/Views/FavoritesView';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="GameView" component={GameView} />
         <Stack.Screen name="UserView" component={UserView} />
+        <Stack.Screen name="FavoritesView" component={FavoritesView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

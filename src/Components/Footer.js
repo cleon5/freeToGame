@@ -36,9 +36,7 @@ const Footer = ({ navigation }) => {
         style={styles.icon}
       />
       <FontAwesome
-        onPress={() => {
-          GetGame();
-        }}
+        onPress={() => navigation.navigate("FavoritesView")}
         name="filter"
         size={50}
         color="white"

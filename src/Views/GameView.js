@@ -127,11 +127,11 @@ const GameView = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: FondoColor, 
-        height: '55%',
+        //height: '%',
         paddingHorizontal: 5,
     },
     container2: {
-      height: '8%',
+      height: 60,
       width: '100%',
       backgroundColor: FondoColor,
       alignItems: "center",

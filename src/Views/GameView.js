@@ -39,7 +39,7 @@ const GameView = ({navigation, route}) => {
     useEffect(() => {
         GetGame(id)
     }, [])
-    let url = "Game"
+    
     const OpenURLButton = ({ url, children }) => {
       const handlePress = useCallback(async () => {
         const supported = await Linking.canOpenURL(url);
@@ -53,7 +53,7 @@ const GameView = ({navigation, route}) => {
     
       return (
         <TouchableOpacity style={styles.Button} onPress={handlePress}>
-          <Text style={styles.txt}>Descargar</Text>
+          <Text style={styles.txt}>Download</Text>
         </TouchableOpacity>
       )
     };
@@ -69,7 +69,7 @@ const GameView = ({navigation, route}) => {
 
       <ScrollView style={styles.container}>
         <Image style={styles.image} source={{ uri: Game.thumbnail }}></Image>
-        <Text style={styles.TextoTitulo}>Descripcion</Text>
+        <Text style={styles.TextoTitulo}>Description</Text>
         {More ? (
           <Text style={styles.Texto}>{Game.description}</Text>
         ) : (
@@ -83,7 +83,7 @@ const GameView = ({navigation, route}) => {
           )}
         </TouchableOpacity>
 
-        <Text style={styles.TextoTitulo}>Informacion del juego</Text>
+        <Text style={styles.TextoTitulo}>Game information</Text>
 
         <InfoGame
           platform={Game.platform}
@@ -112,7 +112,7 @@ const GameView = ({navigation, route}) => {
        
         {Game.platform == "Web Browser" ? null : (
           <View>
-            <Text style={styles.TextoTitulo}>Requerimientos</Text>
+            <Text style={styles.TextoTitulo}>Minimum Requirements</Text>
             <RequerimientosComp requerimientos={Reque} />
           </View>
          

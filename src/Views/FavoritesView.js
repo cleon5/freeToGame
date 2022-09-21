@@ -11,7 +11,6 @@ const FavoritesView = ({ navigation }) => {
   const [GamesFav, setGamesFav] = useState([]);
   let control = [];
   const AxiosFav = async (url) => {
-    console.log(url);
     await axios
       .get(url)
       .then((response) => {
@@ -25,12 +24,11 @@ const FavoritesView = ({ navigation }) => {
   console.log(GamesFav);
   const GetGame = async () => {
     let x = await getDataJson("Pruebajson");
-    let url;
     if (Array.isArray(x))
       x.map((item) =>
         AxiosFav("https://www.freetogame.com/api/game?id=" + item)
       );
-    else x == item.id && x != null ? setGuardar(true) : setGuardar(false);
+    else x != null ? AxiosFav("https://www.freetogame.com/api/game?id=" + x) : null;
   };
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const FavoritesView = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#444444", height: "100%", flex: 1 }}>
       <View style={styles.container2}>
-        <Text style={styles.TextoTitulo}>Lista de Favoritos</Text>
+        <Text style={styles.TextoTitulo}>Favorites list</Text>
       </View>
       <View style={styles.container}>
         <FlatList

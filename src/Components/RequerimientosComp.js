@@ -5,11 +5,11 @@ const RequerimientosComp = ({ requerimientos = [] }) => {
   console.log(requerimientos);
   return (
     <View style={styles.container}>
-      <Text style={styles.Texto}>Sistema Operativo: {requerimientos.os}</Text>
-      <Text style={styles.Texto}>Procesador: {requerimientos.processor}</Text>
-      <Text style={styles.Texto}>Tarjeta Grafica: {requerimientos.graphics} </Text>
-      <Text style={styles.Texto}>Memoria Ram {requerimientos.memory}</Text>
-      <Text style={styles.Texto}>Espacio en disco: {requerimientos.storage}</Text>
+      <Text style={styles.Texto}>Operating system: {requerimientos.os}</Text>
+      <Text style={styles.Texto}>Processor: {requerimientos.processor}</Text>
+      <Text style={styles.Texto}>Graphic card: {requerimientos.graphics} </Text>
+      <Text style={styles.Texto}>RAM: {requerimientos.memory}</Text>
+      <Text style={styles.Texto}>Disc space: {requerimientos.storage}</Text>
     </View>
   );
 };

@@ -12,7 +12,7 @@ const JuegoComp = ({ item = [], navigation }) => {
     let x = [];
 
     (async function () {
-       x = await getDataJson("Pruebajson")
+       x = await getDataJson("FavGames")
       console.log(x);
       if(x == null ){
         await storeDataJson(name, data)
@@ -27,7 +27,7 @@ const JuegoComp = ({ item = [], navigation }) => {
           }
           else x.map(a => get.push(a))
         }
-        else get.push(x)
+        else x != get? get.push(x) : get = null
         console.log(get)
         await storeDataJson(name, get)
       }
@@ -36,7 +36,7 @@ const JuegoComp = ({ item = [], navigation }) => {
   };
 
   const fav = async() => {
-    let x = await getDataJson("Pruebajson")
+    let x = await getDataJson("FavGames")
     if(Array.isArray(x))
       x.includes(item.id)? setGuardar(true) : setGuardar(false);
     else
@@ -57,7 +57,7 @@ const JuegoComp = ({ item = [], navigation }) => {
             name="heart"
             size={35}
             color="white"
-            onPress={() => GuardarData("Pruebajson", item.id)}
+            onPress={() => GuardarData("FavGames", item.id)}
           />
         ) : (
           <AntDesign
@@ -65,7 +65,7 @@ const JuegoComp = ({ item = [], navigation }) => {
             name="hearto"
             size={35}
             color="white"
-            onPress={() => GuardarData("Pruebajson", item.id)}
+            onPress={() => GuardarData("FavGames", item.id)}
           />
         )}
         <View style={styles.TextoView}>

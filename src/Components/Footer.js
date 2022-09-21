@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import { FondoColor } from "../Constants/colors";
-import { FontAwesome, Entypo } from "@expo/vector-icons";
+import { FontAwesome, Entypo, Fontisto  } from "@expo/vector-icons";
 import axios from 'axios'
 
 const Footer = ({ navigation }) => {
@@ -31,14 +31,7 @@ const Footer = ({ navigation }) => {
       <Entypo
         onPress={() => navigation.navigate("Home")}
         name="home"
-        size={50}
-        color="white"
-        style={styles.icon}
-      />
-      <FontAwesome
-        onPress={() => navigation.navigate("FavoritesView")}
-        name="filter"
-        size={50}
+        size={45}
         color="white"
         style={styles.icon}
       />
@@ -47,14 +40,21 @@ const Footer = ({ navigation }) => {
           GetGame();
         }}
         name="random"
-        size={50}
+        size={45}
+        color="white"
+        style={styles.icon}
+      />
+      <Fontisto 
+        onPress={() => navigation.navigate("FavoritesView")}
+        name="favorite"
+        size={40}
         color="white"
         style={styles.icon}
       />
       <FontAwesome
         onPress={() => navigation.navigate("UserView")}
         name="user"
-        size={50}
+        size={45}
         color="white"
         style={styles.icon}
       />

@@ -14,8 +14,6 @@ function Home({navigation, route}) {
 
     const axiosGet = (data) => {
       let tag, platform, sort = '';
-      
-      
        
       console.log(data)
         try {

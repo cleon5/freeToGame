@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { CardColor } from "../Constants/colors";
 import { AntDesign } from "@expo/vector-icons";
-import { getData, getDataJson, storeDataJson } from "../Constants/Guardar";
+import { getDataJson, storeDataJson } from "../Constants/Guardar";
 
 const JuegoComp = ({ item = [], navigation }) => {
   const [Guardar, setGuardar] = useState(false);

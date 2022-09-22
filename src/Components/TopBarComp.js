@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Button, Pressable, TouchableOpacity  } from 'react-native'
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { FontAwesome } from "@expo/vector-icons";
 import { FondoColor } from '../Constants/colors';
 

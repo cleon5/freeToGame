@@ -23,7 +23,7 @@ const FavoritesView = ({ navigation }) => {
   };
   console.log(GamesFav);
   const GetGame = async () => {
-    let x = await getDataJson("Pruebajson");
+    let x = await getDataJson("FavGames");
     if (Array.isArray(x))
       x.map((item) =>
         AxiosFav("https://www.freetogame.com/api/game?id=" + item)
